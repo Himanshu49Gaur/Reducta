@@ -123,3 +123,16 @@ The Reducta framework serves as a foundational implementation for reduction-base
 6. **Integration with AI Pipelines:** Utilize Reducta within deep learning frameworks for gradient accumulation or feature aggregation.  
 
 ---
+
+## 7. About the Author
+
+**Himanshu Gaur**  
+B.Tech Student | Cybersecurity & AI Enthusiast | GPU Computing Researcher  
+**Vellore Institute of Technology, Bhopal**
+
+Himanshu Gaur is an aspiring researcher specializing in **Deep Learning**, **Parallel Computing**, and **CUDA-based Optimization**. His work focuses on developing efficient AI models, GPU-accelerated frameworks, and real-world computational systems.  
+
+**GitHub:** [https://github.com/Himanshu49Gaur](https://github.com/Himanshu49Gaur)  
+**LinkedIn:** [https://linkedin.com/in/himanshu-gaur-305006282](https://linkedin.com/in/himanshu-gaur-305006282)
+
+---
