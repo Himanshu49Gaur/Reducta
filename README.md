@@ -34,3 +34,30 @@ The objective of **Reducta** is to implement a **GPU-optimized reduction framewo
 This dual-stage hybrid reduction model optimally balances GPU compute load and CPU post-processing, resulting in high throughput and verified computational accuracy.
 
 ---
+
+## 4. Proposed Methodology
+
+The workflow of **Reducta** is designed to systematically execute reduction tasks while capturing performance metrics across all computational stages.  
+
+| Stage | Description |
+|-------|--------------|
+| **1. Initialization** | The input array is generated on the host (CPU) with a predefined size. |
+| **2. Device Memory Allocation** | GPU memory buffers for input and output arrays are allocated using `cudaMalloc`. |
+| **3. Data Transfer** | Input data is transferred from host to device memory via `cudaMemcpy`. |
+| **4. Kernel Execution** | The CUDA kernel is launched with multiple thread blocks, each performing local reductions. |
+| **5. Shared Memory Summation** | Threads within each block cooperate using shared memory and synchronization barriers. |
+| **6. Partial Sum Storage** | Each block writes its computed partial sum to global memory. |
+| **7. Host Reduction** | The CPU aggregates all partial sums for final verification. |
+| **8. Validation and Benchmarking** | The GPU-computed result is verified against the CPU reference to ensure accuracy. |
+
+### Optimization Techniques Employed
+
+- **Shared Memory Utilization:** Minimizes redundant global memory access and enhances intra-block data exchange.  
+- **Loop Unrolling:** Reduces loop overhead and improves throughput in final reduction phases.  
+- **Memory Coalescing:** Ensures efficient aligned access to global memory for contiguous threads.  
+- **Thread Synchronization:** Achieved using `__syncthreads()` to maintain data consistency.  
+- **Warp Efficiency:** Reduces divergence and idle threads for maximum occupancy.  
+
+This methodology ensures that the algorithm performs efficiently across varying input sizes, offering both computational speed and numerical stability.
+
+---
