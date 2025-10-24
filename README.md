@@ -20,3 +20,17 @@ The objective of **Reducta** is to implement a **GPU-optimized reduction framewo
 - Establishing a scalable reduction framework adaptable to real-world, high-volume computational workloads.
 
 ---
+
+## 3. Proposed Solution
+
+**Reducta** leverages CUDA’s hierarchical memory structure and thread-parallel execution model to implement a **two-level reduction** process:
+
+1. **Intra-block Reduction:**  
+   Each thread block loads a portion of the dataset into **shared memory** and performs partial reductions in parallel, minimizing global memory traffic.  
+
+2. **Inter-block Reduction:**  
+   The partial results produced by each block are transferred to the host (CPU) for final aggregation, ensuring correctness and precision.
+
+This dual-stage hybrid reduction model optimally balances GPU compute load and CPU post-processing, resulting in high throughput and verified computational accuracy.
+
+---
